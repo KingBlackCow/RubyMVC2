@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-  get '/email' => 'email#index'
+  root :to => "email#index"
+  post '/auth' => 'email#authenticate_send_email'
+  post '/auth_check' => 'email#authenticate_check'
 end

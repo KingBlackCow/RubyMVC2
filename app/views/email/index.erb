@@ -1,1 +1,14 @@
-<%= @email%>
+<h1>메인페이지입니다.</h1>
+인증받을 이메일을 입력해주세요.
+<form action="/auth" method="post" class="form-example">
+  이메일:<input type="email" name="email" />
+  <button type="submit">제출</button>
+</form>
+<br><br><br><br>
+<form action="/auth_check" method="post" class="form-example">
+  <%= "인증번호를 입력해주세요" %><br>
+  이메일: <input type="email" name ="email" />
+  <br>
+  인증번호: <input type="number" name ="code" />
+  <button type="submit">제출</button>
+</form>
