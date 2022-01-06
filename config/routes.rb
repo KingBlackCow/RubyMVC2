@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root :to => "email#index"
   post '/auth' => 'email#authenticate_send_email'
   post '/auth_check' => 'email#authenticate_check'
+  get '/send' => 'email#send_email'
 end
