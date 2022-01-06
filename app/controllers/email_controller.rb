@@ -1,6 +1,6 @@
 require "redis"
 require 'mail'
-require 'net/smtp'
+
 
 class EmailController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
@@ -32,22 +32,17 @@ class EmailController < ApplicationController
   end
 
   def send_email
+    MymailerMailer.simple_send("sgs1159@naver.com", "sgs1159@gmail.com", "제목입니다.", "내용입니다.").deliver_now
+    MymailerMailer.simple_send("sgs1159@naver.com", "sgs1159@gmail.com", "제목입니다2.", "내용입니다2.").deliver_later
+    redirect_to '/'
+  end
 
-    message = <<MESSAGE_END
-From: Private Person <me@fromdomain.com>
-To: A Test User <sgs1159@naver.com>
-MIME-Version: 1.0
-Content-type: text/html
-Subject: SMTP e-mail test
+  def send_emailer
 
-This is an e-mail message to be sent in HTML format
 
-<b>This is HTML message.</b>
-<h1>This is headline.</h1>
-MESSAGE_END
+    @email = 'sgs1159@naver.com'
+    UserMailer.welcome_email.deliver_later
+    redirect_to '/'
 
-    Net::SMTP.start('localhost') do |smtp|
-      smtp.send_message message, 'me@fromdomain.com', 'sgs1159@naver.com'
-    end
   end
 end

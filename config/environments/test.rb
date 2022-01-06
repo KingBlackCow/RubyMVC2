@@ -33,6 +33,12 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: '723f076cb729ab0cea9d78d1f37a147c-0be3b63b-7a66ee0d',
+    domain: 'sandboxb5055e9a3a1a43ddb74e9d584b0b0d20.mailgun.org'
+  }
+
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.

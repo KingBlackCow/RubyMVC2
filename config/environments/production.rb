@@ -64,7 +64,11 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "untitled2_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
-
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: "723f076cb729ab0cea9d78d1f37a147c-0be3b63b-7a66ee0d",
+    domain: "sandboxb5055e9a3a1a43ddb74e9d584b0b0d20.mailgun.org"
+  }
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
